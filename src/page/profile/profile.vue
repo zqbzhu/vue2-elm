@@ -93,6 +93,22 @@
                         </span>
                     </div>
                 </router-link>
+                <!-- 关注店铺 -->
+                <router-link to='/followShop' class="myorder">
+                    <aside>
+                        <svg fill="#ff6b6b">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#heart"></use>
+                        </svg>
+                    </aside>
+                    <div class="myorder-div">
+                        <span>关注店铺</span>
+                        <span class="myorder-divsvg">
+                            <svg fill="#bbb">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
+                            </svg>
+                        </span>
+                    </div>
+                </router-link>
             </section>
             <section class="profile-1reTe">
                 <!-- 服务中心 -->

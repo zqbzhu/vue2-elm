@@ -1,4 +1,4 @@
- <template>
+<template>
     <div>
         <section v-if="!showLoading" class="shop_container">
             <nav class="goback" @click="goback">
@@ -34,7 +34,11 @@
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-left"></use>
                         </svg>
                     </footer>
-
+                    <div class="follow_button" @click.stop="toggleFollow">
+                        <svg :class="{followed: isFollowed}" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                    </div>
                 </section>
             </header>
             <transition name="fade">
@@ -365,6 +369,7 @@
                 elBottom: 0, //当前点击加按钮在网页中的绝对left值
                 ratingScroll: null, //评论页Scroll
                 imgBaseUrl,
+        isFollowed: false,
             }
         },
         created(){
@@ -391,6 +396,18 @@
             ]),
             promotionInfo: function (){
                 return this.shopDetailData.promotion_info || '欢迎光临，用餐高峰期请提前下单，谢谢。'
+            },
+            // 关注/取消关注店铺
+            toggleFollow() {
+                this.isFollowed = !this.isFollowed;
+                // 这里可以添加API调用，保存关注状态到后端
+                if (this.isFollowed) {
+                    // 关注店铺逻辑
+                    console.log('关注店铺');
+                } else {
+                    // 取消关注逻辑
+                    console.log('取消关注店铺');
+                }
             },
             //配送费
             deliveryFee: function () {
@@ -962,6 +979,35 @@
                 position: relative;
                 @include fj;
                 align-items: center;
+            position: relative;
+            .follow_button {
+                position: absolute;
+                top: 50%;
+                right: 1rem;
+                transform: translateY(-50%);
+                width: 2rem;
+                height: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba(0, 0, 0, 0.3);
+                border-radius: 50%;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            .follow_button:hover {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+            .follow_button svg {
+                fill: #fff;
+                width: 1.2rem;
+                height: 1.2rem;
+                transition: all 0.3s ease;
+            }
+            .follow_button svg.followed {
+                fill: #ff6b6b;
+                transform: scale(1.1);
+            }
                 .menu_detail_header_left{
                     width: 11rem;
                     white-space: nowrap;

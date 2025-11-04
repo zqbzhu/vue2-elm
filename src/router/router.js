@@ -31,6 +31,7 @@ const setusername = r => require.ensure([], () => r(require('../page/profile/chi
 const address = r => require.ensure([], () => r(require('../page/profile/children/children/address')), 'address')
 const add = r => require.ensure([], () => r(require('../page/profile/children/children/children/add')), 'add')
 const addDetail = r => require.ensure([], () => r(require('../page/profile/children/children/children/children/addDetail')), 'addDetail')
+const followShop = r => require.ensure([], () => r(require('../page/profile/children/followShop')), 'followShop')
 const balance = r => require.ensure([], () => r(require('../page/balance/balance')), 'balance')
 const balanceDetail = r => require.ensure([], () => r(require('../page/balance/children/detail')), 'balanceDetail')
 const benefit = r => require.ensure([], () => r(require('../page/benefit/benefit')), 'benefit')
@@ -157,11 +158,7 @@ export default [{
                     }]
                 }]
             },
-            {
-                path: 'service', //服务中心
-                component: service,
-            },]
-        },
+            {                path: 'service', //服务中心                component: service,            },            {                path: 'followShop', //关注店铺页面                component: followShop,            },]        },
         //修改密码页
         {
             path: '/forget',
